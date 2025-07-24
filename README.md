@@ -1,6 +1,4 @@
 
-
-```markdown
 # 🚗 Rentalin - Aplikasi Rental Mobil Berbasis Web
 
 Rentalin adalah sistem peminjaman mobil berbasis web yang dibangun dengan Laravel. Aplikasi ini memungkinkan pengguna untuk menyewa mobil dan admin untuk mengelola data mobil, penyewaan, serta memverifikasi status sewa. Sistem juga dilengkapi fitur upload dokumen penting seperti KTP dan SIM.
@@ -33,7 +31,6 @@ Rentalin adalah sistem peminjaman mobil berbasis web yang dibangun dengan Larave
 ## 🏗️ Struktur Folder Utama
 
 ```
-
 rentalin/
 ├── app/
 ├── public/
@@ -41,7 +38,7 @@ rentalin/
 ├── resources/
 │   ├── views/
 │       ├── home.blade.php
-│       ├── sewa\_form.blade.php
+│       ├── sewa_form.blade.php
 │       └── admin/
 │           ├── mobil/index.blade.php
 │           └── sewa/index.blade.php
@@ -49,8 +46,7 @@ rentalin/
 │   └── web.php
 ├── storage/
 │   └── app/public/uploads/
-
-````
+```
 
 ---
 
@@ -67,41 +63,35 @@ Home menampilkan daftar mobil dan statusnya. Jika mobil:
 1. Clone repo:
    ```bash
    git clone https://github.com/Mutiaacode/Rentalin.git
-````
+   ```
 
 2. Masuk ke folder project:
-
    ```bash
    cd Rentalin
    ```
 
 3. Install dependensi:
-
    ```bash
    composer install
    ```
 
 4. Copy file env dan generate key:
-
    ```bash
    cp .env.example .env
    php artisan key:generate
    ```
 
 5. Konfigurasi database di `.env`, lalu migrasi:
-
    ```bash
    php artisan migrate
    ```
 
 6. Link storage (untuk akses gambar):
-
    ```bash
    php artisan storage:link
    ```
 
 7. Jalankan server:
-
    ```bash
    php artisan serve
    ```
@@ -130,16 +120,11 @@ Jika admin mengubah status sewa menjadi `Diterima`, maka:
 
 ## 👩‍💻 Dibuat oleh
 
-Mutia Pegi Intanswari - Programmer Backend
-Valentino Ivan Raditya - Programmer Frontend
-Muhammad Rasya Rifqi - Designer
-Keanu Fatih Kautsar - Support
-Dimas Fandi Bilal Akbar - Support
+Mutia Pegi Intanswari - Programmer Backend  
+Valentino Ivan Raditya - Programmer Frontend  
+Muhammad Rasya Rifqi - Designer  
+Keanu Fatih Kautsar - Support  
+Dimas Fandi Bilal Akbar - Support  
 
-SMK RPL | Web Developer Laravel
+SMK RPL | Web Developer Laravel  
 📧 Email: [mutiacode@gmail.com](mailto:mutiacode@gmail.com)
-
-
-```
-
-```
