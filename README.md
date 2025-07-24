@@ -1,61 +1,146 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+```markdown
+# 🚗 Rentalin - Aplikasi Rental Mobil Berbasis Web
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Rentalin adalah sistem peminjaman mobil berbasis web yang dibangun dengan Laravel. Aplikasi ini memungkinkan pengguna untuk menyewa mobil dan admin untuk mengelola data mobil, penyewaan, serta memverifikasi status sewa. Sistem juga dilengkapi fitur upload dokumen penting seperti KTP dan SIM.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🧰 Fitur Utama
 
-## Learning Laravel
+### 👤 Pengguna (User)
+- Lihat daftar mobil yang tersedia di **halaman Home**.
+- Formulir penyewaan mobil.
+- Upload **KTP** dan **SIM** saat menyewa.
+- Melihat status pesanan.
+- Jika mobil **sudah disewa orang lain dan disetujui admin**, maka tombol sewa **dikunci** dan muncul info "Mobil sudah disewa".
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🛠️ Admin
+- Login ke dashboard admin.
+- CRUD Mobil: Tambah, edit, hapus data mobil.
+- Kelola penyewaan:
+  - Melihat daftar semua penyewaan.
+  - Mengubah status penyewaan:
+    - `Menunggu Konfirmasi`
+    - `Diterima`
+    - `Ditolak`
+  - Jika disetujui (`Diterima`), user akan mendapat **notifikasi** untuk datang ke tempat dan memeriksa unit mobil.
+- File upload user (KTP & SIM) bisa dilihat dari admin panel.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🏗️ Struktur Folder Utama
 
-## Laravel Sponsors
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+rentalin/
+├── app/
+├── public/
+│   ├── storage/ (akses file KTP & SIM)
+├── resources/
+│   ├── views/
+│       ├── home.blade.php
+│       ├── sewa\_form.blade.php
+│       └── admin/
+│           ├── mobil/index.blade.php
+│           └── sewa/index.blade.php
+├── routes/
+│   └── web.php
+├── storage/
+│   └── app/public/uploads/
 
-### Premium Partners
+````
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🖼️ Halaman Utama
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Home menampilkan daftar mobil dan statusnya. Jika mobil:
+- **Tersedia** → Tombol *Sewa* aktif.
+- **Sudah disewa dan disetujui admin** → Tombol *Sewa* dinonaktifkan dan muncul info: "Sudah Disewa".
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 📂 Instalasi
 
-## Security Vulnerabilities
+1. Clone repo:
+   ```bash
+   git clone https://github.com/Mutiaacode/Rentalin.git
+````
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. Masuk ke folder project:
 
-## License
+   ```bash
+   cd Rentalin
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3. Install dependensi:
+
+   ```bash
+   composer install
+   ```
+
+4. Copy file env dan generate key:
+
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+5. Konfigurasi database di `.env`, lalu migrasi:
+
+   ```bash
+   php artisan migrate
+   ```
+
+6. Link storage (untuk akses gambar):
+
+   ```bash
+   php artisan storage:link
+   ```
+
+7. Jalankan server:
+
+   ```bash
+   php artisan serve
+   ```
+
+---
+
+## 📸 Upload Berkas
+
+Saat menyewa mobil, user wajib mengupload:
+
+* **KTP (JPEG/PNG/PDF)**
+* **SIM (JPEG/PNG/PDF)**
+
+File akan disimpan di `/storage/app/public/uploads`.
+
+---
+
+## 📬 Notifikasi Sewa Diterima
+
+Jika admin mengubah status sewa menjadi `Diterima`, maka:
+
+* User akan melihat notifikasi pada dashboard user: **"Sewa diterima, silakan datang ke tempat untuk cek unit mobil."**
+* Mobil otomatis akan dikunci dari penyewaan oleh user lain.
+
+---
+
+## 👩‍💻 Dibuat oleh
+
+Mutia Pegi Intanswari - Programmer Backend
+Valentino Ivan Raditya - Programmer Frontend
+Muhammad Rasya Rifqi - Designer
+Keanu Fatih Kautsar - Support
+Dimas Fandi Bilal Akbar - Support
+
+SMK RPL | Web Developer Laravel
+📧 Email: [mutiacode@gmail.com](mailto:mutiacode@gmail.com)
+
+
+```
+
+Kalau kamu nanti sudah upload foto halaman home atau butuh tambahan badge seperti license atau preview, tinggal tambahkan saja di bagian atas readme-nya. Kalau kamu sudah upload ke GitHub dan ingin aku bantu rapikan lagi, kirim aja link-nya!
+```
