@@ -142,5 +142,4 @@ SMK RPL | Web Developer Laravel
 
 ```
 
-Kalau kamu nanti sudah upload foto halaman home atau butuh tambahan badge seperti license atau preview, tinggal tambahkan saja di bagian atas readme-nya. Kalau kamu sudah upload ke GitHub dan ingin aku bantu rapikan lagi, kirim aja link-nya!
 ```
